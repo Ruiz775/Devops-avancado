@@ -1,0 +1,22 @@
+name: Hello World
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:   # permite rodar manualmente pela aba Actions
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Dizer Hello World
+        run: echo "Hello, World!"
+
+      - name: Mostrar informações do run
+        run: |
+          echo "Repositório: ${{ github.repository }}"
+          echo "Disparado por: ${{ github.actor }}"
+          echo "Branch: ${{ github.ref_name }}"
